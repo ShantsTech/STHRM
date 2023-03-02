@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="src/test/phpunit/Util/bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true" convertNoticesToExceptions="true" convertWarningsToExceptions="true"
+         beStrictAboutOutputDuringTests="true"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory suffix=".php">src</directory>
+    </include>
+    <exclude>
+      <directory>src/cache</directory>
+      <directory>src/config</directory>
+      <directory>src/lib</directory>
+      <directory>src/web</directory>
+      <directory>src/vendor</directory>
+      <directory>src/test</directory>
+      <directory>src/plugins/**/test</directory>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="Admin">
+      <directory>src/plugins/shanthrmAdminPlugin/test</directory>
+    </testsuite>
+    <testsuite name="Authentication">
+      <directory>src/plugins/shanthrmAuthenticationPlugin/test</directory>
+    </testsuite>
+    <testsuite name="Core">
+      <directory>src/plugins/shanthrmCorePlugin/test</directory>
+    </testsuite>
+    <testsuite name="Leave">
+      <directory>src/plugins/shanthrmLeavePlugin/test/Dao</directory>
+      <directory>src/plugins/shanthrmLeavePlugin/test</directory>
+    </testsuite>
+    <testsuite name="Pim">
+      <directory>src/plugins/shanthrmPimPlugin/test</directory>
+    </testsuite>
+    <testsuite name="OAuth">
+      <directory>src/plugins/shanthrmCoreOAuthPlugin/test</directory>
+    </testsuite>
+    <testsuite name="Time">
+      <directory>src/plugins/shanthrmTimePlugin/test</directory>
+    </testsuite>
+    <testsuite name="Attendance">
+      <directory>src/plugins/shanthrmAttendancePlugin/test</directory>
+    </testsuite>
+    <testsuite name="Maintenance">
+      <directory>src/plugins/shanthrmMaintenancePlugin/test</directory>
+    </testsuite>
+    <testsuite name="I18N">
+      <directory>src/plugins/shanthrmI18NPlugin/test</directory>
+    </testsuite>
+    <testsuite name="Performance">
+      <directory>src/plugins/shanthrmPerformancePlugin/test</directory>
+    </testsuite>
+    <testsuite name="Recruitment">
+      <directory>src/plugins/shanthrmRecruitmentPlugin/test</directory>
+    </testsuite>
+    <testsuite name="Directory">
+      <directory>src/plugins/shanthrmCorporateDirectoryPlugin/test</directory>
+    </testsuite>
+    <testsuite name="CorporateBranding">
+      <directory>src/plugins/shanthrmCorporateBrandingPlugin/test</directory>
+    </testsuite>
+    <testsuite name="Dashboard">
+      <directory>src/plugins/shanthrmDashboardPlugin/test</directory>
+    </testsuite>
+    <testsuite name="LDAP">
+      <directory>src/plugins/shanthrmLDAPAuthenticationPlugin/test</directory>
+    </testsuite>
+    <testsuite name="Buzz">
+      <directory>src/plugins/shanthrmBuzzPlugin/test</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>
