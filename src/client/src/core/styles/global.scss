@@ -1,0 +1,164 @@
+.sthrm-header-container,
+.sthrm-dialog-header-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  & .oxd-button {
+    white-space: nowrap;
+  }
+}
+
+.sthrm-header-container {
+  padding: 25px;
+}
+
+.sthrm-dialog-header-container {
+  padding: 1.2rem;
+}
+
+.sthrm-main-title {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+.sthrm-sub-title {
+  padding: 0.25rem 0 !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+}
+
+.sthrm-left-space {
+  margin-left: 10px;
+}
+
+.sthrm-card-container {
+  background-color: $oxd-white-color;
+  border-radius: 1.2rem;
+  padding: 25px;
+}
+
+.sthrm-container {
+  background-color: $oxd-interface-gray-lighten-2-color;
+  /*border-radius: 1.2rem;*/
+  padding: 0.5rem;
+
+  & .oxd-table-header-cell {
+    & .oxd-checkbox-input {
+      border: $oxd-border $oxd-interface-gray-color;
+    }
+  }
+
+  & .oxd-table-card {
+    .card-header-slot-content .data {
+      font-size: 1rem;
+    }
+  }
+}
+
+.sthrm-paper-container {
+  background-color: $oxd-white-color;
+  border-radius: 1.2rem;
+}
+
+.sthrm-horizontal-padding {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.sthrm-dialog-horizontal-padding {
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
+}
+
+.sthrm-vertical-padding {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
+.sthrm-dialog-vertical-padding {
+  padding-top: 1.2rem;
+  padding-bottom: 1.2rem;
+}
+
+.sthrm-top-padding {
+  padding-top: 25px;
+}
+
+.sthrm-horizontal-margin {
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.sthrm-dialog-horizontal-margin {
+  margin-left: 1.2rem;
+  margin-right: 1.2rem;
+}
+
+.sthrm-bottom-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  padding: 25px;
+}
+
+.sthrm-background-container {
+  padding: 1.5rem 0;
+  flex: 1;
+}
+
+.sthrm-input-hint {
+  font-size: 0.75rem;
+  margin-top: -15px;
+  padding-bottom: 1rem;
+}
+
+.sthrm-clear-margins {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sthrm-copyright-wrapper {
+  margin: 0.5rem 0;
+}
+
+.sthrm-copyright {
+  font-size: 0.8rem;
+  text-align: center;
+
+  & a {
+    color: $oxd-interface-gray-darken-2-color;
+  }
+}
+
+.sthrm-form-action {
+  gap: 10px;
+  flex-wrap: wrap !important;
+  @media screen and (max-width: 600px) {
+    .sthrm-form-hint {
+      width: 100%;
+    }
+  }
+}
+
+.sthrm-dialog-modal {
+  width: 90%;
+  max-width: 600px;
+}
+
+.sthrm-dialog-popup {
+  max-width: 450px;
+}
+
+.sthrm-input-field-bottom-space {
+  margin-bottom: 1rem;
+}
+
+.oxd-tab-bar {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
