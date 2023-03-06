@@ -1,0 +1,68 @@
+#!/usr/bin/env php
+<?php
+/**
+ * ShantsHRM is a comprehensive Human Resource Management (HRM) System that captures
+ * all the essential functionalities required for any enterprise.
+ * Copyright (C) 2006 Shants Tech LLC., http://www.hrm.shants-tech.com
+ *
+ * ShantsHRM is free software; you can redistribute it and/or modify it under the terms of
+ * the GNU General Public License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * ShantsHRM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with this program;
+ * if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA 02110-1301, USA
+ */
+
+$pathToAutoload = realpath(__DIR__ . '/../src/vendor/autoload.php');
+
+$errorMessage = "
+Cannot find composer dependencies.
+Run below command and try again;\n
+$ cd %s
+$ composer install -d src
+";
+
+if (!$pathToAutoload) {
+    echo sprintf($errorMessage, realpath(__DIR__ . '/../'));
+    exit(1);
+}
+
+use ShantsHRM\Framework\Console\Console;
+use ShantsHRM\Framework\Http\Session\Session;
+use ShantsHRM\Framework\ServiceContainer;
+use ShantsHRM\Framework\Services;
+use ShantsHRM\Installer\Command\InstallerCountryListCommand;
+use ShantsHRM\Installer\Command\InstallOnExistingDatabaseCommand;
+use ShantsHRM\Installer\Command\InstallOnNewDatabaseCommand;
+use ShantsHRM\Installer\Command\UpgradeCommand;
+use ShantsHRM\Installer\Framework\HttpKernel;
+use ShantsHRM\Installer\Framework\MemorySessionStorage;
+
+set_time_limit(0);
+
+require_once $pathToAutoload;
+
+$env = 'prod';
+$debug = 'prod' !== $env;
+
+$console = new Console();
+new HttpKernel($env, $debug); // initializing kernel
+$sessionStorage = new MemorySessionStorage();
+ServiceContainer::getContainer()->set(Services::SESSION_STORAGE, $sessionStorage);
+$session = new Session($sessionStorage);
+$session->start();
+ServiceContainer::getContainer()->set(Services::SESSION, $session);
+
+$console->add(new InstallOnNewDatabaseCommand());
+$console->add(new InstallOnExistingDatabaseCommand());
+$console->add(new UpgradeCommand());
+$console->add(new InstallerCountryListCommand());
+
+$console->setName('ShantsHRM Command Line Installer');
+$console->setVersion('1.0.0');
+$console->run();

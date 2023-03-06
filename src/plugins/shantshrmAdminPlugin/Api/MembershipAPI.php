@@ -1,0 +1,335 @@
+<?php
+/**
+ * ShantsHRM is a comprehensive Human Resource Management (HRM) System that captures
+ * all the essential functionalities required for any enterprise.
+ * Copyright (C) 2006 ShantsHRM Inc., http://www.hrm.shants-tech.com
+ *
+ * ShantsHRM is free software; you can redistribute it and/or modify it under the terms of
+ * the GNU General Public License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * ShantsHRM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with this program;
+ * if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301, USA
+ */
+
+namespace ShantsHRM\Admin\Api;
+
+use Exception;
+use ShantsHRM\Admin\Api\Model\MembershipModel;
+use ShantsHRM\Admin\Dto\MembershipSearchFilterParams;
+use ShantsHRM\Admin\Service\MembershipService;
+use ShantsHRM\Core\Api\CommonParams;
+use ShantsHRM\Core\Api\V2\CrudEndpoint;
+use ShantsHRM\Core\Api\V2\Endpoint;
+use ShantsHRM\Core\Api\V2\EndpointCollectionResult;
+use ShantsHRM\Core\Api\V2\EndpointResourceResult;
+use ShantsHRM\Core\Api\V2\Exception\RecordNotFoundException;
+use ShantsHRM\Core\Api\V2\Model\ArrayModel;
+use ShantsHRM\Core\Api\V2\ParameterBag;
+use ShantsHRM\Core\Api\V2\RequestParams;
+use ShantsHRM\Core\Api\V2\Validator\ParamRule;
+use ShantsHRM\Core\Api\V2\Validator\ParamRuleCollection;
+use ShantsHRM\Core\Api\V2\Validator\Rule;
+use ShantsHRM\Core\Api\V2\Validator\Rules;
+use ShantsHRM\Core\Exception\DaoException;
+use ShantsHRM\Entity\Membership;
+
+class MembershipAPI extends Endpoint implements CrudEndpoint
+{
+    public const PARAMETER_NAME = 'name';
+    public const PARAM_RULE_NAME_MAX_LENGTH = 100;
+    /**
+     * @var null|MembershipService
+     */
+    protected ?MembershipService $membershipService = null;
+
+    /**
+     * @return MembershipService
+     */
+    public function getMembershipService(): MembershipService
+    {
+        if (is_null($this->membershipService)) {
+            $this->membershipService = new MembershipService();
+        }
+        return $this->membershipService;
+    }
+
+    /**
+     * @param MembershipService $membershipService
+     */
+    public function setMembershipService(MembershipService $membershipService): void
+    {
+        $this->membershipService = $membershipService;
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v2/admin/memberships/{id}",
+     *     tags={"Admin/Memberships"},
+     *     @OA\PathParameter(
+     *         name="id",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="data",
+     *                 ref="#/components/schemas/Admin-MembershipModel"
+     *             ),
+     *             @OA\Property(property="meta", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(response="404", ref="#/components/responses/RecordNotFound")
+     * )
+     *
+     * @inheritDoc
+     * @throws Exception
+     */
+    public function getOne(): EndpointResourceResult
+    {
+        $id = $this->getRequestParams()->getInt(RequestParams::PARAM_TYPE_ATTRIBUTE, CommonParams::PARAMETER_ID);
+        $membership = $this->getMembershipService()->getMembershipById($id);
+        $this->throwRecordNotFoundExceptionIfNotExist($membership, Membership::class);
+        return new EndpointResourceResult(MembershipModel::class, $membership);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForGetOne(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(
+                CommonParams::PARAMETER_ID,
+                new Rule(Rules::POSITIVE)
+            ),
+        );
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v2/admin/memberships",
+     *     tags={"Admin/Memberships"},
+     *     @OA\Parameter(
+     *         name="sortField",
+     *         in="query",
+     *         required=false,
+     *         @OA\Schema(type="string", enum=MembershipSearchFilterParams::ALLOWED_SORT_FIELDS)
+     *     ),
+     *     @OA\Parameter(ref="#/components/parameters/sortOrder"),
+     *     @OA\Parameter(ref="#/components/parameters/limit"),
+     *     @OA\Parameter(ref="#/components/parameters/offset"),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="array",
+     *                 @OA\Items(ref="#/components/schemas/Admin-MembershipModel")
+     *             ),
+     *             @OA\Property(property="meta",
+     *                 type="object",
+     *                 @OA\Property(property="total", type="integer")
+     *             )
+     *         )
+     *     )
+     * )
+     *
+     * @inheritDoc
+     * @throws Exception
+     */
+    public function getAll(): EndpointCollectionResult
+    {
+        $membershipParamHolder = new MembershipSearchFilterParams();
+        $this->setSortingAndPaginationParams($membershipParamHolder);
+        $memberships = $this->getMembershipService()->getMembershipList($membershipParamHolder);
+        $count = $this->getMembershipService()->getMembershipCount($membershipParamHolder);
+        return new EndpointCollectionResult(
+            MembershipModel::class,
+            $memberships,
+            new ParameterBag([CommonParams::PARAMETER_TOTAL => $count])
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForGetAll(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            ...$this->getSortingAndPaginationParamsRules(MembershipSearchFilterParams::ALLOWED_SORT_FIELDS)
+        );
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/api/v2/admin/memberships",
+     *     tags={"Admin/Memberships"},
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string"),
+     *             required={"name"}
+     *         )
+     *     ),
+     *     @OA\Response(response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="data",
+     *                 ref="#/components/schemas/Admin-MembershipModel"
+     *             ),
+     *             @OA\Property(property="meta", type="object")
+     *         )
+     *     )
+     * )
+     *
+     * @inheritDoc
+     * @throws Exception
+     */
+    public function create(): EndpointResourceResult
+    {
+        $memberships = $this->saveMembership();
+        return new EndpointResourceResult(MembershipModel::class, $memberships);
+    }
+
+    /**
+     * @return Membership
+     * @throws RecordNotFoundException
+     * @throws DaoException
+     */
+    public function saveMembership(): Membership
+    {
+        $id = $this->getRequestParams()->getInt(RequestParams::PARAM_TYPE_ATTRIBUTE, CommonParams::PARAMETER_ID);
+        $name = $this->getRequestParams()->getString(RequestParams::PARAM_TYPE_BODY, self::PARAMETER_NAME);
+        if ($id) {
+            $membership = $this->getMembershipService()->getMembershipById($id);
+            $this->throwRecordNotFoundExceptionIfNotExist($membership, Membership::class);
+        } else {
+            $membership = new Membership();
+        }
+        $membership->setName($name);
+        return $this->getMembershipService()->saveMembership($membership);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForCreate(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(
+                self::PARAMETER_NAME,
+                new Rule(Rules::STRING_TYPE),
+                new Rule(Rules::LENGTH, [null, self::PARAM_RULE_NAME_MAX_LENGTH]),
+            ),
+        );
+    }
+
+    /**
+     * @OA\Put(
+     *     path="/api/v2/admin/memberships/{id}",
+     *     tags={"Admin/Memberships"},
+     *     @OA\PathParameter(
+     *         name="id",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string"),
+     *             required={"name"}
+     *         )
+     *     ),
+     *     @OA\Response(response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="data",
+     *                 ref="#/components/schemas/Admin-MembershipModel"
+     *             ),
+     *             @OA\Property(property="meta", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(response="404", ref="#/components/responses/RecordNotFound")
+     * )
+     *
+     * @inheritDoc
+     * @throws Exception
+     */
+    public function update(): EndpointResourceResult
+    {
+        $memberships = $this->saveMembership();
+        return new EndpointResourceResult(MembershipModel::class, $memberships);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForUpdate(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(
+                CommonParams::PARAMETER_ID,
+                new Rule(Rules::POSITIVE)
+            ),
+            new ParamRule(
+                self::PARAMETER_NAME,
+                new Rule(Rules::STRING_TYPE),
+                new Rule(Rules::LENGTH, [null, self::PARAM_RULE_NAME_MAX_LENGTH]),
+            ),
+        );
+    }
+
+    /**
+     * @return ParamRuleCollection
+     */
+    public function getValidationRuleForSaveMembership(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(CommonParams::PARAMETER_ID),
+            new ParamRule(
+                self::PARAMETER_NAME,
+                new Rule(Rules::STRING_TYPE),
+                new Rule(Rules::LENGTH, [null, self::PARAM_RULE_NAME_MAX_LENGTH]),
+            ),
+        );
+    }
+
+    /**
+     * @OA\Delete(
+     *     path="/api/v2/admin/memberships",
+     *     tags={"Admin/Memberships"},
+     *     @OA\RequestBody(ref="#/components/requestBodies/DeleteRequestBody"),
+     *     @OA\Response(response="200", ref="#/components/responses/DeleteResponse")
+     * )
+     *
+     * @inheritDoc
+     * @return EndpointResourceResult
+     * @throws Exception
+     */
+    public function delete(): EndpointResourceResult
+    {
+        $ids = $this->getRequestParams()->getArray(RequestParams::PARAM_TYPE_BODY, CommonParams::PARAMETER_IDS);
+        $this->getMembershipService()->deleteMemberships($ids);
+        return new EndpointResourceResult(ArrayModel::class, $ids);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForDelete(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(CommonParams::PARAMETER_IDS),
+        );
+    }
+}

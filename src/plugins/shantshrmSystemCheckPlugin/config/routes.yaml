@@ -1,0 +1,12 @@
+apiv2_core_system_check:
+  path: /api/v2/core/system-check
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericPublicRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\SystemCheck\PublicApi\SystemCheckAPI
+    id: 0
+
+core_system_check:
+  path: /core/system-check
+  controller: ShantsHRM\SystemCheck\Controller\SystemCheckController::handle
+  methods: [ GET ]

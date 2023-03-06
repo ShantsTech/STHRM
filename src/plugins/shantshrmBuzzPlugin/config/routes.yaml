@@ -1,0 +1,112 @@
+apiv2_buzz_feed:
+  path: /api/v2/buzz/feed
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzFeedAPI
+
+apiv2_buzz_upcoming_anniversary:
+  path: /api/v2/buzz/anniversaries
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\EmployeeAnniversaryAPI
+
+apiv2_buzz_posts:
+  path: /api/v2/buzz/posts
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ POST ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzPostAPI
+
+apiv2_buzz_shares:
+  path: /api/v2/buzz/shares
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ POST ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzShareAPI
+
+apiv2_buzz_share:
+  path: /api/v2/buzz/shares/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ PUT, DELETE ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzShareAPI
+
+apiv2_buzz_comments:
+  path: /api/v2/buzz/shares/{shareId}/comments
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzCommentAPI
+
+apiv2_buzz_comment:
+  path: /api/v2/buzz/shares/{shareId}/comments/{commentId}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT, DELETE ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzCommentAPI
+    _key: commentId
+  requirements:
+    shareId: '\d+'
+
+aapiv2_buzz_video_url_validation:
+  path: /api/v2/buzz/validation/links
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _key: url
+    _api: ShantsHRM\Buzz\Api\BuzzVideoURLValidationAPI
+
+apiv2_buzz_like_on_share:
+  path: /api/v2/buzz/shares/{shareId}/likes
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzLikeOnShareAPI
+  requirements:
+    shareId: '\d+'
+
+apiv2_buzz_comment_on_share:
+  path: /api/v2/buzz/comments/{commentId}/likes
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzLikeOnCommentAPI
+  requirements:
+    commentId: '\d+'
+
+apiv2_buzz_post:
+  path: /api/v2/buzz/posts/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzPostAPI
+  requirements:
+    id: '\d+'
+
+apiv2_buzz_post_share:
+  path: /api/v2/buzz/posts/{postId}/shares
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Buzz\Api\BuzzPostShareAPI
+
+
+##########################
+#        Files
+##########################
+
+buzz_photo:
+  path: /buzz/photo/{id}
+  controller: ShantsHRM\Buzz\Controller\File\BuzzPhotoController::handle
+  methods: [ GET ]
+
+##########################
+#        Screens
+##########################
+
+buzz_module:
+  path: /buzz/viewBuzz
+  controller: ShantsHRM\Buzz\Controller\BuzzController::handle
+  methods: [ GET ]

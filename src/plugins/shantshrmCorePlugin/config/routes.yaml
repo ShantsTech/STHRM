@@ -1,0 +1,19 @@
+apiv2_core_data_groups:
+  path: /api/v2/core/data-groups
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Core\Api\Rest\DataGroupAPI
+
+apiv2_core_about_organization:
+  path: /api/v2/core/about
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    id: 0
+    _api: ShantsHRM\Core\Api\Rest\AboutOrganizationAPI
+
+push_events:
+  path: /events/push
+  controller: ShantsHRM\Core\Registration\Controller\PushEventController::handle
+  methods: [ POST ]

@@ -1,0 +1,49 @@
+root:
+  path: /
+  controller: ShantsHRM\Authentication\Controller\RootController::handle
+  methods: [ GET ]
+
+auth_login:
+  path: /auth/login
+  controller: ShantsHRM\Authentication\Controller\LoginController::handle
+  methods: [ GET ]
+
+auth_validate:
+  path: /auth/validate
+  controller: ShantsHRM\Authentication\Controller\ValidateController::handle
+  methods: [ POST ]
+
+auth_logout:
+  path: /auth/logout
+  controller: ShantsHRM\Authentication\Controller\LogoutController::handle
+  methods: [ GET ]
+
+auth_admin_access_verify:
+  path: /auth/adminVerify
+  controller: ShantsHRM\Authentication\Controller\AdministratorVerifyController::handle
+  methods: [ POST ]
+
+auth_request_reset_password:
+  path: /auth/requestResetPassword
+  controller: ShantsHRM\Authentication\Controller\RequestResetPasswordController::handle
+  methods: [ POST ]
+
+auth_reset_password:
+  path: /auth/resetPassword
+  controller: ShantsHRM\Authentication\Controller\ResetPasswordController::handle
+  methods: [ POST ]
+
+auth_send_password_reset:
+  path: /auth/sendPasswordReset
+  controller: ShantsHRM\Authentication\Controller\RequestPasswordSuccessController::handle
+  methods: [ GET ]
+
+auth_forgot_password_username:
+  path: /auth/requestPasswordResetCode
+  controller: ShantsHRM\Authentication\Controller\RequestPasswordController::handle
+  methods: [ GET ]
+
+auth_reset_code:
+  path: /auth/resetPassword/resetCode/{resetCode}
+  controller: ShantsHRM\Authentication\Controller\ResetCodeController::handle
+  methods: [ GET ]

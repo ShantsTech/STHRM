@@ -1,0 +1,25 @@
+apiv2_corporate_directory_employee:
+  path: /api/v2/directory/employees/{empNumber}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\CorporateDirectory\Api\EmployeeDirectoryAPI
+    _key: empNumber
+  requirements:
+    empNumber: '\d+'
+
+apiv2_corporate_directory_employees:
+  path: /api/v2/directory/employees
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\CorporateDirectory\Api\EmployeeDirectoryAPI
+
+##########################
+#        Screens
+##########################
+
+corporate_directory_module:
+  path: /directory/viewDirectory
+  controller: ShantsHRM\CorporateDirectory\Controller\CorporateDirectoryModuleController::handle
+  methods: [ GET ]

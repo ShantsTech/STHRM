@@ -1,0 +1,689 @@
+apiv2_pim_employee:
+  path: /api/v2/pim/employees/{empNumber}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeAPI
+    _key: empNumber
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees:
+  path: /api/v2/pim/employees
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeAPI
+
+apiv2_pim_employees_count:
+  path: /api/v2/pim/employees/count
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeCountAPI
+
+apiv2_pim_employee_picture:
+  path: /api/v2/pim/employees/{empNumber}/picture
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeePictureAPI
+    _key: empNumber
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employee_custom_fields:
+  path: /api/v2/pim/employees/{empNumber}/custom-fields
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeCustomFieldAPI
+    _key: empNumber
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_personal_details:
+  path: /api/v2/pim/employees/{empNumber}/personal-details
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeePersonalDetailAPI
+    _key: empNumber
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_job_details:
+  path: /api/v2/pim/employees/{empNumber}/job-details
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeJobDetailAPI
+    _key: empNumber
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_job_employment_contract:
+  path: /api/v2/pim/employees/{empNumber}/employment-contract
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmploymentContractAPI
+    _key: empNumber
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_termination:
+  path: /api/v2/pim/employees/{empNumber}/terminations/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeTerminationAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_terminations:
+  path: /api/v2/pim/employees/{empNumber}/terminations
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeTerminationAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employee_contact_details:
+  path: /api/v2/pim/employee/{empNumber}/contact-details
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeContactDetailsAPI
+    _key: empNumber
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_dependent:
+  path: /api/v2/pim/employees/{empNumber}/dependents/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeDependentAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_dependents:
+  path: /api/v2/pim/employees/{empNumber}/dependents
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeDependentAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_salary_component:
+  path: /api/v2/pim/employees/{empNumber}/salary-components/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeSalaryComponentAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_salary_components:
+  path: /api/v2/pim/employees/{empNumber}/salary-components
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeSalaryComponentAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_attachment:
+  path: /api/v2/pim/employees/{empNumber}/screen/{screen}/attachments/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeAttachmentAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_attachments:
+  path: /api/v2/pim/employees/{empNumber}/screen/{screen}/attachments
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeAttachmentAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employee_emergency_contact:
+  path: /api/v2/pim/employees/{empNumber}/emergency-contacts/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmpEmergencyContactAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employee_emergency_contacts:
+  path: /api/v2/pim/employees/{empNumber}/emergency-contacts
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST , DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmpEmergencyContactAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_skills:
+  path: /api/v2/pim/employees/{empNumber}/skills
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeSkillAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_allowed_skills:
+  path: /api/v2/pim/employees/{empNumber}/skills/allowed
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeAllowedSkillAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_skill:
+  path: /api/v2/pim/employees/{empNumber}/skills/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeSkillAPI
+  requirements:
+    empNumber: '\d+'
+    id: '\d+'
+
+apiv2_pim_employees_educations:
+  path: /api/v2/pim/employees/{empNumber}/educations
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeEducationAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_education:
+  path: /api/v2/pim/employees/{empNumber}/educations/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeEducationAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_languages:
+  path: /api/v2/pim/employees/{empNumber}/languages
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeLanguageAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_language:
+  path: /api/v2/pim/employees/{empNumber}/languages/{languageId}/fluencies/{fluencyId}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _key: fluencyId
+    _api: ShantsHRM\Pim\Api\EmployeeLanguageAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_allowed_languages:
+  path: /api/v2/pim/employees/{empNumber}/languages/allowed
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeAllowedLanguageAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_work_experiences:
+  path: /api/v2/pim/employees/{empNumber}/work-experiences
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeWorkExperienceAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_work_experience:
+  path: /api/v2/pim/employees/{empNumber}/work-experiences/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeWorkExperienceAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_licenses:
+  path: /api/v2/pim/employees/{empNumber}/licenses
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeLicenseAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_allowed_licenses:
+  path: /api/v2/pim/employees/{empNumber}/licenses/allowed
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeAllowedLicenseAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_license:
+  path: /api/v2/pim/employees/{empNumber}/licenses/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeLicenseAPI
+  requirements:
+    empNumber: '\d+'
+    id: '\d+'
+
+apiv2_pim_termination_reason:
+  path: /api/v2/pim/termination-reasons/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\TerminationReasonConfigurationAPI
+
+apiv2_pim_termination_reasons:
+  path: /api/v2/pim/termination-reasons
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\TerminationReasonConfigurationAPI
+
+apiv2_pim_reporting_method:
+  path: /api/v2/pim/reporting-methods/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\ReportingMethodConfigurationAPI
+
+apiv2_pim_reporting_methods:
+  path: /api/v2/pim/reporting-methods
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\ReportingMethodConfigurationAPI
+
+apiv2_pim_custom_fields:
+  path: /api/v2/pim/custom-fields
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\CustomFieldAPI
+
+apiv2_pim_custom_field:
+  path: /api/v2/pim/custom-fields/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\CustomFieldAPI
+  requirements:
+    id: '\d+'
+
+apiv2_pim_optional_field:
+  path: /api/v2/pim/optional-field
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    id: 0
+    _api: ShantsHRM\Pim\Api\OptionalFieldAPI
+
+apiv2_pim_employees_immigration:
+  path: /api/v2/pim/employees/{empNumber}/immigrations/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeImmigrationRecordAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_immigrations:
+  path: /api/v2/pim/employees/{empNumber}/immigrations
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeImmigrationRecordAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_report_to_supervisors:
+  path: /api/v2/pim/employees/{empNumber}/supervisors
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeSupervisorAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_report_to_supervisor:
+  path: /api/v2/pim/employees/{empNumber}/supervisors/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeSupervisorAPI
+  requirements:
+    empNumber: '\d+'
+    id: '\d+'
+
+apiv2_pim_report_to_subordinate:
+  path: /api/v2/pim/employees/{empNumber}/subordinates/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeSubordinateAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_report_to_subordinates:
+  path: /api/v2/pim/employees/{empNumber}/subordinates
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeSubordinateAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_report_to_allowed_employees:
+  path: /api/v2/pim/employees/{empNumber}/report-to/allowed
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeAllowedReportToEmployeeAPI
+
+apiv2_pim_employees_memberships:
+  path: /api/v2/pim/employees/{empNumber}/memberships
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeMembershipAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_membership:
+  path: /api/v2/pim/employees/{empNumber}/memberships/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeMembershipAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_us_tax_exemption:
+  path: /api/v2/pim/employees/{empNumber}/tax-exemption
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    id: 0
+    _api: ShantsHRM\Pim\Api\EmpUsTaxExemptionAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_work_shift:
+  path: /api/v2/pim/employees/{empNumber}/work-shift
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _key: empNumber
+    _api: ShantsHRM\Pim\Api\EmployeeWorkShiftAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_employees_import:
+  path: /api/v2/pim/csv-import
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ POST ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\EmployeeCSVImportAPI
+
+apiv2_pim_reports:
+  path: /api/v2/pim/reports
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\PimReportAPI
+    _key: name
+
+apiv2_pim_reports_data:
+  path: /api/v2/pim/reports/data
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\PimReportDataAPI
+
+apiv2_pim_defined_reports:
+  path: /api/v2/pim/reports/defined
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\PimDefinedReportAPI
+
+apiv2_pim_defined_report:
+  path: /api/v2/pim/reports/defined/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Pim\Api\PimDefinedReportAPI
+
+apiv2_pim_update_password:
+  path: /api/v2/pim/update-password
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ PUT ]
+  defaults:
+    id: 0
+    _api: ShantsHRM\Pim\Api\UpdatePasswordAPI
+
+apiv2_pim_validate_employee_email:
+  path: /api/v2/pim/employees/{empNumber}/contact-details/validation/work-emails
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _key: workEmail
+    _api: ShantsHRM\Pim\Api\ValidationEmployeeEmailAPI
+  requirements:
+    empNumber: '\d+'
+
+apiv2_pim_validate_employee_other_email:
+  path: /api/v2/pim/employees/{empNumber}/contact-details/validation/other-emails
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _key: otherEmail
+    _api: ShantsHRM\Pim\Api\ValidationEmployeeOtherEmailAPI
+  requirements:
+    empNumber: '\d+'
+
+##########################
+#        Files
+##########################
+
+pim_employee_picture:
+  path: /pim/viewPhoto/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\File\EmployeePictureController::handle
+  methods: [ GET ]
+
+pim_employee_attachment:
+  path: /pim/viewAttachment/empNumber/{empNumber}/attachId/{attachId}
+  controller: ShantsHRM\Pim\Controller\File\EmployeeAttachmentController::handle
+  methods: [ GET ]
+
+pim_employee_csv_import_sample_attachment:
+  path: /pim/sampleCsvDownload
+  controller: ShantsHRM\Pim\Controller\File\EmployeeCsvImportSampleAttachmentController::handle
+  methods: [ GET ]
+
+##########################
+#        Screens
+##########################
+
+pim_module:
+  path: /pim/viewPimModule
+  controller: ShantsHRM\Pim\Controller\PimModuleController::handle
+  methods: [ GET ]
+
+pim_view_my_details:
+  path: /pim/viewMyDetails
+  controller: ShantsHRM\Pim\Controller\ViewMyDetailsController::handle
+  methods: [ GET ]
+
+pim_view_employee_list:
+  path: /pim/viewEmployeeList
+  controller: ShantsHRM\Pim\Controller\EmployeeController::handle
+  methods: [ GET ]
+
+pim_add_employee:
+  path: /pim/addEmployee
+  controller: ShantsHRM\Pim\Controller\SaveEmployeeController::handle
+  methods: [ GET ]
+
+pim_employee_personal_details:
+  path: /pim/viewPersonalDetails/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeePersonalDetailController::handle
+  methods: [ GET ]
+
+pim_employee_contact_details:
+  path: /pim/contactDetails/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeContactDetailsController::handle
+  methods: [ GET ]
+
+pim_employee_emergency_contacts:
+  path: /pim/viewEmergencyContacts/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeEmergencyContactsController::handle
+  methods: [ GET ]
+
+pim_employee_dependents:
+  path: /pim/viewDependents/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeDependentsController::handle
+  methods: [ GET ]
+
+pim_employee_salary:
+  path: /pim/viewSalaryList/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeSalaryController::handle
+  methods: [ GET ]
+
+pim_employee_profile_picture:
+  path: /pim/viewPhotograph/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeProfilePictureController::handle
+  methods: [ GET ]
+
+pim_employee_job:
+  path: /pim/viewJobDetails/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeJobController::handle
+  methods: [ GET ]
+
+pim_employee_qualifications:
+  path: /pim/viewQualifications/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeQualificationsController::handle
+  methods: [ GET ]
+
+pim_employee_report_to:
+  path: /pim/viewReportToDetails/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeReportToController::handle
+  methods: [ GET ]
+
+view_termination_reason:
+  path: /pim/viewTerminationReasons
+  controller: ShantsHRM\Pim\Controller\TerminationReasonController::handle
+  methods: [ GET ]
+
+save_termination_reason:
+  path: /pim/saveTerminationReasons
+  controller: ShantsHRM\Pim\Controller\SaveTerminationReasonController::handle
+  methods: [ GET ]
+
+edit_termination_reason:
+  path: /pim/saveTerminationReasons/{id}
+  controller: ShantsHRM\Pim\Controller\SaveTerminationReasonController::handle
+
+view_reporting_method:
+  path: /pim/viewReportingMethods
+  controller: ShantsHRM\Pim\Controller\ReportingMethodController::handle
+  methods: [ GET ]
+
+save_reporting_method:
+  path: /pim/saveReportingMethod
+  controller: ShantsHRM\Pim\Controller\SaveReportingMethodController::handle
+  methods: [ GET ]
+
+edit_reporting_method:
+  path: /pim/saveReportingMethod/{id}
+  controller: ShantsHRM\Pim\Controller\SaveReportingMethodController::handle
+  methods: [ GET ]
+
+view_custom_fields:
+  path: /pim/listCustomFields
+  controller: ShantsHRM\Pim\Controller\CustomFieldController::handle
+  methods: [ GET ]
+
+save_custom_fields:
+  path: /pim/saveCustomFields
+  controller: ShantsHRM\Pim\Controller\SaveCustomFieldController::handle
+  methods: [ GET ]
+
+edit_custom_fields:
+  path: /pim/saveCustomFields/{id}
+  controller: ShantsHRM\Pim\Controller\SaveCustomFieldController::handle
+
+view_optional_field:
+  path: /pim/configurePim
+  controller: ShantsHRM\Pim\Controller\OptionalFieldController::handle
+  methods: [ GET ]
+
+pim_employee_immigration:
+  path: /pim/viewImmigration/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeImmigrationController::handle
+
+pim_employee_membership:
+  path: /pim/viewMemberships/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmployeeMembershipController::handle
+  methods: [ GET ]
+
+pim_employee_tax_exemption:
+  path: /pim/viewUsTaxExemptions/empNumber/{empNumber}
+  controller: ShantsHRM\Pim\Controller\EmpUsTaxExemptionController::handle
+  methods: [ GET ]
+
+pim_employee_csv_import:
+  path: /pim/pimCsvImport
+  controller: ShantsHRM\Pim\Controller\EmployeeCsvImportController::handle
+  methods: [ GET ]
+
+pim_view_employee_reports:
+  path: /pim/viewDefinedPredefinedReports
+  controller: ShantsHRM\Pim\Controller\EmployeeReportController::handle
+  methods: [ GET ]
+
+pim_save_employee_reports:
+  path: /pim/definePredefinedReport
+  controller: ShantsHRM\Pim\Controller\SaveEmployeeReportController::handle
+  methods: [ GET ]
+
+pim_edit_employee_reports:
+  path: /pim/definePredefinedReport/{id}
+  controller: ShantsHRM\Pim\Controller\SaveEmployeeReportController::handle
+  methods: [ GET ]
+
+pim_display_employee_report:
+  path: /pim/displayPredefinedReport/{id}
+  controller: ShantsHRM\Pim\Controller\EmployeeReportController::handle
+  methods: [ GET ]
+
+update_password:
+  path: /pim/updatePassword
+  controller: ShantsHRM\Pim\Controller\UpdatePasswordController::handle
+  methods: [ GET ]

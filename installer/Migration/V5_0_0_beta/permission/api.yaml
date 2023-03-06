@@ -1,0 +1,1145 @@
+##########################
+#        Core
+##########################
+
+apiv2_core_data_groups:
+  description: 'API-v2 Core - Data Groups'
+  api: ShantsHRM\Core\Api\Rest\DataGroupAPI
+  module: core
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_core_about_organization:
+  description: 'API-v2 Core - About'
+  api: ShantsHRM\Core\Api\Rest\AboutOrganizationAPI
+  module: core
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false } }
+
+##########################
+#        Admin
+##########################
+
+apiv2_admin_education:
+  description: 'API-v2 Admin - Education'
+  api: ShantsHRM\Admin\Api\EducationAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_admin_employment_status:
+  description: 'API-v2 Admin - Employment Status'
+  api: ShantsHRM\Admin\Api\EmploymentStatusAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_admin_job_category:
+  description: 'API-v2 Admin - Job Categories'
+  api: ShantsHRM\Admin\Api\JobCategoryAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_job_specification:
+  description: 'API-v2 Admin - Job Specification'
+  api: ShantsHRM\Admin\Api\JobSpecificationAPI
+  module: admin
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_admin_job_title:
+  description: 'API-v2 Admin - Job Titles'
+  api: ShantsHRM\Admin\Api\JobTitleAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_admin_language:
+  description: 'API-v2 Admin - Languages'
+  api: ShantsHRM\Admin\Api\LanguageAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_license:
+  description: 'API-v2 Admin - Licenses'
+  api: ShantsHRM\Admin\Api\LicenseAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_membership:
+  description: 'API-v2 Admin - Memberships'
+  api: ShantsHRM\Admin\Api\MembershipAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_nationality:
+  description: 'API-v2 Admin - Nationalities'
+  api: ShantsHRM\Admin\Api\NationalityAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_organization:
+  description: 'API-v2 Admin - General Information'
+  api: ShantsHRM\Admin\Api\OrganizationAPI
+  module: admin
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+
+apiv2_admin_paygrade_currency:
+  description: 'API-v2 Admin - Pay Grade Currencies'
+  api: ShantsHRM\Admin\Api\PayGradeCurrencyAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_paygrade_allowed_currency:
+  description: 'API-v2 Admin - Pay Grade Allowed Currencies'
+  api: ShantsHRM\Admin\Api\PayGradeAllowedCurrencyAPI
+  module: admin
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_admin_skill:
+  description: 'API-v2 Admin - Skills'
+  api: ShantsHRM\Admin\Api\SkillAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_subunit:
+  description: 'API-v2 Admin - Organization Structure'
+  api: ShantsHRM\Admin\Api\SubunitAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_admin_user:
+  description: 'API-v2 Admin - Users'
+  api: ShantsHRM\Admin\Api\UserAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_email_configuration:
+  description: 'API-v2 Admin - Email Configuration'
+  api: ShantsHRM\Admin\Api\EmailConfigurationAPI
+  module: admin
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+
+apiv2_admin_oauth_client:
+  description: 'API-v2 Admin - OAuth Clients'
+  api: ShantsHRM\OAuth\Api\OAuthClientAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_location:
+  description: 'API-v2 Admin - Locations'
+  api: ShantsHRM\Admin\Api\LocationAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_pay_grade:
+  description: 'API-v2 Admin - Pay Grade'
+  api: ShantsHRM\Admin\Api\PayGradeAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_modules:
+  description: 'API-v2 Admin - Modules'
+  api: ShantsHRM\Admin\Api\ModulesAPI
+  module: admin
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+
+apiv2_admin_work_shift:
+  description: 'API-v2 Admin - Work Shift'
+  api: ShantsHRM\Admin\Api\WorkShiftAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_work_shift_employee:
+  description: 'API-v2 Admin - Work Shift Employee'
+  api: ShantsHRM\Admin\Api\WorkShiftEmployeeAPI
+  module: admin
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_admin_email_subscriptions:
+  description: 'API-v2 Admin - Email Subscription'
+  api: ShantsHRM\Admin\Api\EmailSubscriptionAPI
+  module: admin
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+
+apiv2_admin_email_subscribers:
+  description: 'API-v2 Admin - Email Subscriber'
+  api: ShantsHRM\Admin\Api\EmailSubscriberAPI
+  module: admin
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_admin_validation_user_name:
+  description: 'Admin-v2 Admin - User Name Validation'
+  api: ShantsHRM\Admin\Api\ValidationUserNameAPI
+  module: admin
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+
+##########################
+#        PIM
+##########################
+
+apiv2_pim_custom_field:
+  description: 'API-v2 PIM - Custom Fields'
+  api: ShantsHRM\Pim\Api\CustomFieldAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_pim_optional_field:
+  description: 'API-v2 PIM - Optional Fields'
+  api: ShantsHRM\Pim\Api\OptionalFieldAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_pim_reporting_method:
+  description: 'API-v2 PIM - Reporting Methods'
+  api: ShantsHRM\Pim\Api\ReportingMethodConfigurationAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_pim_termination_reason:
+  description: 'API-v2 PIM - Termination Reasons'
+  api: ShantsHRM\Pim\Api\TerminationReasonConfigurationAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_pim_employee:
+  description: 'API-v2 PIM - Employees'
+  api: ShantsHRM\Pim\Api\EmployeeAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: false
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: false, delete: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_employee_emergency_contact:
+  description: 'API-v2 PIM - Employee Emergency Contacts'
+  api: ShantsHRM\Pim\Api\EmpEmergencyContactAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_contact_detail:
+  description: 'API-v2 PIM - Employee Contact Details'
+  api: ShantsHRM\Pim\Api\EmployeeContactDetailsAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: true, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false, self: true } }
+
+apiv2_pim_employee_dependent:
+  description: 'API-v2 PIM - Employee Dependents'
+  api: ShantsHRM\Pim\Api\EmployeeDependentAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_education:
+  description: 'API-v2 PIM - Employee Education'
+  api: ShantsHRM\Pim\Api\EmployeeEducationAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_immigration:
+  description: 'API-v2 PIM - Employee Immigration Records'
+  api: ShantsHRM\Pim\Api\EmployeeImmigrationRecordAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_job_detail:
+  description: 'API-v2 PIM - Employee Job Details'
+  api: ShantsHRM\Pim\Api\EmployeeJobDetailAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_employee_language:
+  description: 'API-v2 PIM - Employee Languages'
+  api: ShantsHRM\Pim\Api\EmployeeLanguageAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_license:
+  description: 'API-v2 PIM - Employee License'
+  api: ShantsHRM\Pim\Api\EmployeeLicenseAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_personal_detail:
+  description: 'API-v2 PIM - Employee Personal Details'
+  api: ShantsHRM\Pim\Api\EmployeePersonalDetailAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: true, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false, self: true } }
+
+apiv2_pim_employee_picture:
+  description: 'API-v2 PIM - Employee Photograph'
+  api: ShantsHRM\Pim\Api\EmployeePictureAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: true, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false, self: true } }
+
+apiv2_pim_employee_salary_component:
+  description: 'API-v2 PIM - Employee Salary Components'
+  api: ShantsHRM\Pim\Api\EmployeeSalaryComponentAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_employee_skill:
+  description: 'API-v2 PIM - Employee Skills'
+  api: ShantsHRM\Pim\Api\EmployeeSkillAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_termination:
+  description: 'API-v2 PIM - Employee Termination'
+  api: ShantsHRM\Pim\Api\EmployeeTerminationAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_employee_work_experience:
+  description: 'API-v2 PIM - Employee Work Experience'
+  api: ShantsHRM\Pim\Api\EmployeeWorkExperienceAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_employment_contract:
+  description: 'API-v2 PIM - Employee Employment Contract'
+  api: ShantsHRM\Pim\Api\EmploymentContractAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_employee_attachment:
+  description: 'API-v2 PIM - Employee Attachments'
+  api: ShantsHRM\Pim\Api\EmployeeAttachmentAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+
+apiv2_pim_employee_custom_field:
+  description: 'API-v2 PIM - Employee Custom Field'
+  api: ShantsHRM\Pim\Api\EmployeeCustomFieldAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: true, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false, self: true } }
+
+apiv2_pim_employee_allowed_language:
+  description: 'API-v2 PIM - Employee Allowed Language'
+  api: ShantsHRM\Pim\Api\EmployeeAllowedLanguageAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_employee_allowed_license:
+  description: 'API-v2 PIM - Employee Allowed Licenses'
+  api: ShantsHRM\Pim\Api\EmployeeAllowedLicenseAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_employee_allowed_skill:
+  description: 'API-v2 PIM - Employee Allowed Skills'
+  api: ShantsHRM\Pim\Api\EmployeeAllowedSkillAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_report_to_supervisor:
+  description: 'API-v2 PIM - Employee Report To Supervisors'
+  api: ShantsHRM\Pim\Api\EmployeeSupervisorAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_report_to_subordinate:
+  description: 'API-v2 PIM - Employee Report To Subordinates'
+  api: ShantsHRM\Pim\Api\EmployeeSubordinateAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_report_to_allowed_employees:
+  description: 'API-v2 PIM - Employee Allowed Supervisors/Subordinates'
+  api: ShantsHRM\Pim\Api\EmployeeAllowedReportToEmployeeAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_pim_employee_memberships:
+  description: 'API-v2 PIM - Employee Memberships'
+  api: ShantsHRM\Pim\Api\EmployeeMembershipAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_pim_tax_exemptions:
+  description: 'API-v2 PIM - Tax Exemptions'
+  api: ShantsHRM\Pim\Api\EmpUsTaxExemptionAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_pim_employee_work_shift:
+  description: 'API-v2 PIM - Employee Work Shift'
+  api: ShantsHRM\Pim\Api\EmployeeWorkShiftAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_pim_employee_count:
+  description: 'API-v2 PIM - Employee Count'
+  api: ShantsHRM\Pim\Api\EmployeeCountAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_pim_employee_csv_import:
+  description: 'API-v2 PIM - Employee CSV Import'
+  api: ShantsHRM\Pim\Api\EmployeeCSVImportAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: false, delete: false } }
+
+apiv2_pim_defined_reports:
+  description: 'API-v2 PIM - Defined Reports'
+  api: ShantsHRM\Pim\Api\PimDefinedReportAPI
+  module: pim
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+
+apiv2_pim_reports:
+  description: 'API-v2 PIM - Reports'
+  api: ShantsHRM\Pim\Api\PimReportAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_pim_reports_data:
+  description: 'API-v2 PIM - Reports Data'
+  api: ShantsHRM\Pim\Api\PimReportDataAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_pim_update_password:
+  description: 'API-v2 PIM - Password Update'
+  api: ShantsHRM\Pim\Api\UpdatePasswordAPI
+  module: pim
+  allowed:
+    read: false
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: false, create: false, update: true, delete: false, self: true } }
+    - { role: ESS, permission: { read: false, create: false, update: true, delete: false, self: true } }
+
+apiv2_pim_validation_work_email:
+  description: 'API-v2 PIM - Work Email Validation'
+  api: ShantsHRM\Pim\Api\ValidationEmployeeEmailAPI
+  module: pim
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+##########################
+#        Leave
+##########################
+
+apiv2_leave_holiday:
+  description: 'API-v2 Leave - Holidays'
+  api: ShantsHRM\Leave\Api\HolidayAPI
+  module: leave
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_workweek:
+  description: 'API-v2 Leave - Work Week'
+  api: ShantsHRM\Leave\Api\WorkWeekAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_eligible_leave_types:
+  description: 'API-v2 Leave - Eligible Leave Types'
+  api: ShantsHRM\Leave\Api\EligibleLeaveTypeAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_leave_types:
+  description: 'API-v2 Leave - Leave Types'
+  api: ShantsHRM\Leave\Api\LeaveTypeAPI
+  module: leave
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_leave_period:
+  description: 'API-v2 Leave - Leave Period'
+  api: ShantsHRM\Leave\Api\LeavePeriodAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_my_leave_requests:
+  description: 'API-v2 Leave - My Leave Requests'
+  api: ShantsHRM\Leave\Api\MyLeaveRequestAPI
+  module: leave
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: false, self: true } }
+    - { role: ESS, permission: { read: true, create: true, update: true, delete: false, self: true } }
+
+apiv2_leave_employee_leave_requests:
+  description: 'API-v2 Leave - Employee Leave Requests'
+  api: ShantsHRM\Leave\Api\EmployeeLeaveRequestAPI
+  module: leave
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: false } }
+    - { role: ESS, permission: { read: false, create: false, update: true, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: true, update: true, delete: false } }
+
+apiv2_leave_employee_bulk_leave_requests:
+  description: 'API-v2 Leave - Employee Bulk Leave Requests'
+  api: ShantsHRM\Leave\Api\EmployeeBulkLeaveRequestAPI
+  module: leave
+  allowed:
+    read: false
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: false, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: false, create: false, update: true, delete: false } }
+
+apiv2_leave_leave_entitlements:
+  description: 'API-v2 Leave - Leave Entitlements'
+  api: ShantsHRM\Leave\Api\LeaveEntitlementAPI
+  module: leave
+  allowed:
+    read: true
+    create: true
+    update: true
+    delete: true
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true, self: true } }
+    - { role: Admin, permission: { read: true, create: true, update: true, delete: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_leave_balance:
+  description: 'API-v2 Leave - Leave Balance'
+  api: ShantsHRM\Leave\Api\LeaveBalanceAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_employee_leave_entitlements:
+  description: 'API-v2 Leave - Employee Leave Entitlements'
+  api: ShantsHRM\Leave\Api\EmployeeLeaveEntitlementAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_leave_entitlements_validation:
+  description: 'API-v2 Leave - Leave Entitlements Validation'
+  api: ShantsHRM\Leave\Api\ValidationLeaveEntitlementValueAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_overlap_leaves:
+  description: 'API-v2 Leave - Overlap Leaves'
+  api: ShantsHRM\Leave\Api\LeaveOverlapAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+
+apiv2_leave_leave_request_comment:
+  description: 'API-v2 Leave - Leave Request Comment'
+  api: ShantsHRM\Leave\Api\LeaveRequestCommentAPI
+  module: leave
+  allowed:
+    read: true
+    create: true
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: false, delete: false, self: true } }
+    - { role: Admin, permission: { read: true, create: true, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: true, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: false, delete: false } }
+
+apiv2_leave_leave_comment:
+  description: 'API-v2 Leave - Leave Comment'
+  api: ShantsHRM\Leave\Api\LeaveCommentAPI
+  module: leave
+  allowed:
+    read: true
+    create: true
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: true, update: false, delete: false } }
+    - { role: Admin, permission: { read: true, create: true, update: false, delete: false, self: true } }
+    - { role: ESS, permission: { read: true, create: true, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: true, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: true, update: false, delete: false, self: true } }
+
+apiv2_leave_leaves:
+  description: 'API-v2 Leave - Leave'
+  api: ShantsHRM\Leave\Api\LeaveAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: Admin, permission: { read: true, create: false, update: true, delete: false, self: true } }
+    - { role: ESS, permission: { read: true, create: false, update: true, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: true, delete: false, self: true } }
+
+apiv2_leave_bulk_leaves:
+  description: 'API-v2 Leave - Employee Bulk Leaves'
+  api: ShantsHRM\Leave\Api\BulkLeaveAPI
+  module: leave
+  allowed:
+    read: false
+    create: false
+    update: true
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: false, create: false, update: true, delete: false } }
+    - { role: ESS, permission: { read: false, create: false, update: true, delete: false } }
+
+apiv2_leave_reports:
+  description: 'API-v2 Leave - Reports'
+  api: ShantsHRM\Leave\Api\LeaveReportAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false, self: true } }
+
+apiv2_leave_reports_data:
+  description: 'API-v2 Leave - Reports Data'
+  api: ShantsHRM\Leave\Api\LeaveReportDataAPI
+  module: leave
+  allowed:
+    read: true
+    create: false
+    update: false
+    delete: false
+  permissions:
+    - { role: Admin, permission: { read: true, create: false, update: false, delete: false } }
+    - { role: ESS, permission: { read: true, create: false, update: false, delete: false, self: true } }
+    - { role: Supervisor, permission: { read: true, create: false, update: false, delete: false } }

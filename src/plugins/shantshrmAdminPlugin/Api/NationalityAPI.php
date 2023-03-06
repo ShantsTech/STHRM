@@ -1,0 +1,326 @@
+<?php
+/**
+ * ShantsHRM is a comprehensive Human Resource Management (HRM) System that captures
+ * all the essential functionalities required for any enterprise.
+ * Copyright (C) 2006 ShantsHRM Inc., http://www.hrm.shants-tech.com
+ *
+ * ShantsHRM is free software; you can redistribute it and/or modify it under the terms of
+ * the GNU General Public License as published by the Free Software Foundation; either
+ * version 2 of the License, or (at your option) any later version.
+ *
+ * ShantsHRM is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License along with this program;
+ * if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+ * Boston, MA  02110-1301, USA
+ */
+
+namespace ShantsHRM\Admin\Api;
+
+use Exception;
+use ShantsHRM\Admin\Api\Model\NationalityModel;
+use ShantsHRM\Admin\Dto\NationalitySearchFilterParams;
+use ShantsHRM\Admin\Service\NationalityService;
+use ShantsHRM\Core\Api\CommonParams;
+use ShantsHRM\Core\Api\V2\CrudEndpoint;
+use ShantsHRM\Core\Api\V2\Endpoint;
+use ShantsHRM\Core\Api\V2\EndpointCollectionResult;
+use ShantsHRM\Core\Api\V2\EndpointResourceResult;
+use ShantsHRM\Core\Api\V2\Exception\RecordNotFoundException;
+use ShantsHRM\Core\Api\V2\Model\ArrayModel;
+use ShantsHRM\Core\Api\V2\ParameterBag;
+use ShantsHRM\Core\Api\V2\RequestParams;
+use ShantsHRM\Core\Api\V2\Validator\ParamRule;
+use ShantsHRM\Core\Api\V2\Validator\ParamRuleCollection;
+use ShantsHRM\Core\Api\V2\Validator\Rule;
+use ShantsHRM\Core\Api\V2\Validator\Rules;
+use ShantsHRM\Core\Exception\DaoException;
+use ShantsHRM\Entity\Nationality;
+
+class NationalityAPI extends EndPoint implements CrudEndpoint
+{
+    public const PARAMETER_NAME = 'name';
+    public const PARAM_RULE_NAME_MAX_LENGTH = 100;
+
+    /**
+     * @var null|NationalityService
+     */
+    protected ?NationalityService $nationalityService = null;
+
+    /**
+     * @return NationalityService
+     */
+    public function getNationalityService(): NationalityService
+    {
+        if (!$this->nationalityService instanceof NationalityService) {
+            $this->nationalityService = new NationalityService();
+        }
+        return $this->nationalityService;
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v2/admin/nationalities/{id}",
+     *     tags={"Admin/Nationality"},
+     *     @OA\PathParameter(
+     *         name="id",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="data",
+     *                 ref="#/components/schemas/Admin-NationalityModel"
+     *             ),
+     *             @OA\Property(property="meta", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(response="404", ref="#/components/responses/RecordNotFound")
+     * )
+     *
+     * @inheritDoc
+     */
+    public function getOne(): EndpointResourceResult
+    {
+        $id = $this->getRequestParams()->getInt(RequestParams::PARAM_TYPE_ATTRIBUTE, CommonParams::PARAMETER_ID);
+        $nationality = $this->getNationalityService()->getNationalityById($id);
+        $this->throwRecordNotFoundExceptionIfNotExist($nationality, Nationality::class);
+        return new EndpointResourceResult(NationalityModel::class, $nationality);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForGetOne(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(
+                CommonParams::PARAMETER_ID,
+                new Rule(Rules::POSITIVE)
+            ),
+        );
+    }
+
+    /**
+     * @OA\Get(
+     *     path="/api/v2/admin/nationalities",
+     *     tags={"Admin/Nationality"},
+     *     @OA\Parameter(
+     *         name="sortField",
+     *         in="query",
+     *         required=false,
+     *         @OA\Schema(type="string", enum=NationalitySearchFilterParams::ALLOWED_SORT_FIELDS)
+     *     ),
+     *     @OA\Parameter(ref="#/components/parameters/sortOrder"),
+     *     @OA\Parameter(ref="#/components/parameters/limit"),
+     *     @OA\Parameter(ref="#/components/parameters/offset"),
+     *     @OA\Response(
+     *         response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="data",
+     *                 type="array",
+     *                 @OA\Items(ref="#/components/schemas/Admin-NationalityModel")
+     *             ),
+     *             @OA\Property(property="meta",
+     *                 type="object",
+     *                 @OA\Property(property="total", type="integer")
+     *             )
+     *         )
+     *     )
+     * )
+     *
+     * @inheritDoc
+     * @throws Exception
+     */
+    public function getAll(): EndpointCollectionResult
+    {
+        $nationalityParamHolder = new NationalitySearchFilterParams();
+        $this->setSortingAndPaginationParams($nationalityParamHolder);
+        $nationalities = $this->getNationalityService()->getNationalityList($nationalityParamHolder);
+        $count = $this->getNationalityService()->getNationalityCount($nationalityParamHolder);
+        return new EndpointCollectionResult(
+            NationalityModel::class,
+            $nationalities,
+            new ParameterBag([CommonParams::PARAMETER_TOTAL => $count])
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForGetAll(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            ...$this->getSortingAndPaginationParamsRules(NationalitySearchFilterParams::ALLOWED_SORT_FIELDS)
+        );
+    }
+
+    /**
+     * @OA\Post(
+     *     path="/api/v2/admin/nationalities",
+     *     tags={"Admin/Nationality"},
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="id", type="integer"),
+     *             @OA\Property(property="name", type="string"),
+     *             required={"name"}
+     *         )
+     *     ),
+     *     @OA\Response(response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="data",
+     *                 ref="#/components/schemas/Admin-NationalityModel"
+     *             ),
+     *             @OA\Property(property="meta", type="object")
+     *         )
+     *     )
+     * )
+     *
+     * @inheritDoc
+     * @throws Exception
+     */
+    public function create(): EndpointResourceResult
+    {
+        $nationality = $this->saveNationality();
+        return new EndpointResourceResult(NationalityModel::class, $nationality);
+    }
+
+    /**
+     * @return Nationality
+     * @throws DaoException
+     * @throws RecordNotFoundException
+     */
+    public function saveNationality(): Nationality
+    {
+        $id = $this->getRequestParams()->getInt(RequestParams::PARAM_TYPE_ATTRIBUTE, CommonParams::PARAMETER_ID);
+        $name = $this->getRequestParams()->getString(RequestParams::PARAM_TYPE_BODY, self::PARAMETER_NAME);
+        if ($id) {
+            $nationality = $this->getNationalityService()->getNationalityById($id);
+            $this->throwRecordNotFoundExceptionIfNotExist($nationality, Nationality::class);
+        } else {
+            $nationality = new Nationality();
+        }
+        $nationality->setName($name);
+        return $this->getNationalityService()->saveNationality($nationality);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForCreate(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(
+                self::PARAMETER_NAME,
+                new Rule(Rules::STRING_TYPE),
+                new Rule(Rules::LENGTH, [null, self::PARAM_RULE_NAME_MAX_LENGTH]),
+            ),
+        );
+    }
+
+    /**
+     * @OA\Put(
+     *     path="/api/v2/admin/nationalities/{id}",
+     *     tags={"Admin/Nationality"},
+     *     @OA\PathParameter(
+     *         name="id",
+     *         @OA\Schema(type="integer")
+     *     ),
+     *     @OA\RequestBody(
+     *         @OA\JsonContent(
+     *             type="object",
+     *             @OA\Property(property="name", type="string"),
+     *             required={"name"}
+     *         )
+     *     ),
+     *     @OA\Response(response="200",
+     *         description="Success",
+     *         @OA\JsonContent(
+     *             @OA\Property(
+     *                 property="data",
+     *                 ref="#/components/schemas/Admin-NationalityModel"
+     *             ),
+     *             @OA\Property(property="meta", type="object")
+     *         )
+     *     ),
+     *     @OA\Response(response="404", ref="#/components/responses/RecordNotFound")
+     * )
+     *
+     * @inheritDoc
+     * @throws Exception
+     */
+    public function update(): EndpointResourceResult
+    {
+        $nationalities = $this->saveNationality();
+        return new EndpointResourceResult(NationalityModel::class, $nationalities);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForUpdate(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(
+                CommonParams::PARAMETER_ID,
+                new Rule(Rules::POSITIVE)
+            ),
+            new ParamRule(
+                self::PARAMETER_NAME,
+                new Rule(Rules::STRING_TYPE),
+                new Rule(Rules::LENGTH, [null, self::PARAM_RULE_NAME_MAX_LENGTH]),
+            ),
+        );
+    }
+
+    /**
+     * @return ParamRuleCollection
+     */
+    public function getValidationRuleForSaveNationality(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(CommonParams::PARAMETER_ID),
+            new ParamRule(
+                self::PARAMETER_NAME,
+                new Rule(Rules::STRING_TYPE),
+                new Rule(Rules::LENGTH, [null, self::PARAM_RULE_NAME_MAX_LENGTH]),
+            ),
+        );
+    }
+
+    /**
+     * @OA\Delete(
+     *     path="/api/v2/admin/nationalities",
+     *     tags={"Admin/Nationality"},
+     *     @OA\RequestBody(ref="#/components/requestBodies/DeleteRequestBody"),
+     *     @OA\Response(response="200", ref="#/components/responses/DeleteResponse")
+     * )
+     *
+     * @inheritDoc
+     */
+    public function delete(): EndpointResourceResult
+    {
+        $ids = $this->getRequestParams()->getArray(RequestParams::PARAM_TYPE_BODY, CommonParams::PARAMETER_IDS);
+        $this->getNationalityService()->deleteNationalities($ids);
+        return new EndpointResourceResult(ArrayModel::class, $ids);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getValidationRuleForDelete(): ParamRuleCollection
+    {
+        return new ParamRuleCollection(
+            new ParamRule(CommonParams::PARAMETER_IDS),
+        );
+    }
+}

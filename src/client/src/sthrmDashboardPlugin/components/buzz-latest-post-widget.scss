@@ -1,0 +1,62 @@
+// Shants Tech is a comprehensive Human Resource Management (HRM) System that captures
+// all the essential functionalities required for any enterprise.
+// Copyright (C) 2006 Shants Tech Inc., http://www.shants-tech.com
+//
+// Shants Tech is free software; you can redistribute it and/or modify it under the terms of
+// the GNU General Public License as published by the Free Software Foundation; either
+// version 2 of the License, or (at your option) any later version.
+//
+// Shants Tech is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+// without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+// See the GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License along with this program;
+// if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+// Boston, MA  02110-1301, USA
+
+.sthrm-buzz-widget {
+  margin: 0;
+  grid-gap: 10px;
+  &-card {
+    display: block;
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid $oxd-interface-gray-lighten-2-color;
+  }
+  &-header {
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    &-text {
+      margin-left: 10px;
+    }
+    &-emp {
+      font-size: 12px;
+      font-weight: 700;
+      @include truncate(1, 1, #fff);
+    }
+    &-time {
+      font-size: 10px;
+      color: $oxd-interface-gray-color;
+    }
+    ::v-deep(.sthrm-buzz-profile-image img) {
+      width: 35px;
+      height: 35px;
+    }
+  }
+  &-body {
+    font-size: 12px;
+    text-align: justify;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+  }
+  &-picture {
+    width: 100%;
+    object-fit: contain;
+    border-radius: 0.75rem;
+  }
+  &-divider {
+    border-style: dashed;
+  }
+}

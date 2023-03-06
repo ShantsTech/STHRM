@@ -1,0 +1,4 @@
+view_help_support:
+  path: /help/support
+  controller: ShantsHRM\Help\Controller\ViewSupportController::handle
+  methods: [ GET ]

@@ -1,0 +1,60 @@
+apiv2_dashboard_employees_on_leave:
+  path: /api/v2/dashboard/employees/leaves
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Dashboard\Api\EmployeeOnLeaveAPI
+
+apiv2_dashboard_employees_by_subunit:
+  path: /api/v2/dashboard/employees/subunit
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Dashboard\Api\EmployeeDistributionBySubunitAPI
+
+apiv2_dashboard_quick_launch:
+  path: /api/v2/dashboard/shortcuts
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Dashboard\Api\QuickLaunchAPI
+
+apiv2_dashboard_employees_by_location:
+  path: /api/v2/dashboard/employees/locations
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Dashboard\Api\EmployeeDistributionByLocationAPI
+
+apiv2_dashboard_employee_time_at_work:
+  path: /api/v2/dashboard/employees/time-at-work
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Dashboard\Api\EmployeeTimeAtWorkAPI
+    id: 0
+
+apiv2_dashboard_employee_action_summary:
+  path: /api/v2/dashboard/employees/action-summary
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Dashboard\Api\EmployeeActionSummaryAPI
+    id: 0
+
+apiv2_dashboard_employee_on_leave_today_configuration:
+  path: /api/v2/dashboard/config/employee-on-leave-today
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Dashboard\Api\EmployeeOnLeaveTodayConfigAPI
+    id: 0
+
+##########################
+#        Screens
+##########################
+
+dashboard_widget:
+  path: /dashboard/index
+  controller: ShantsHRM\Dashboard\Controller\DashboardController::handle
+  methods: [ GET ]

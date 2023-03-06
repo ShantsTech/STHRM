@@ -1,0 +1,276 @@
+apiv2_time_project:
+  path: /api/v2/time/projects/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Time\Api\ProjectAPI
+    _key: id
+
+apiv2_time_projects:
+  path: /api/v2/time/projects
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Time\Api\ProjectAPI
+
+apiv2_time_validate_project_name:
+  path: /api/v2/time/validation/project-name
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _key: projectName
+    _api: ShantsHRM\Time\Api\ValidateProjectNameAPI
+
+apiv2_time_time_sheet_period_config:
+  path: /api/v2/time/time-sheet-period
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    id: 0
+    _api: ShantsHRM\Time\Api\TimeConfigPeriodAPI
+
+apiv2_time_customer:
+  path: /api/v2/time/customers/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Time\Api\CustomerAPI
+
+apiv2_time_customers:
+  path: /api/v2/time/customers
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Time\Api\CustomerAPI
+
+apiv2_time_validate_customer_name:
+  path: /api/v2/time/validation/customer-name
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _key: customerName
+    _api: ShantsHRM\Time\Api\ValidationCustomerNameAPI
+
+apiv2_time_project_activities:
+  path: /api/v2/time/project/{projectId}/activities
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST, DELETE ]
+  defaults:
+    _api: ShantsHRM\Time\Api\ProjectActivityAPI
+
+apiv2_time_project_activity:
+  path: /api/v2/time/project/{projectId}/activities/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Time\Api\ProjectActivityAPI
+
+apiv2_time_validate_project_activity_name:
+  path: /api/v2/time/validation/activity-name/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _key: activityName
+    _api: ShantsHRM\Time\Api\ValidationProjectActivityNameAPI
+
+apiv2_time_my_time_sheets:
+  path: /api/v2/time/timesheets
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST ]
+  defaults:
+    _api: ShantsHRM\Time\Api\MyTimesheetAPI
+
+apiv2_time_my_time_sheet:
+  path: /api/v2/time/timesheets/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ PUT ]
+  defaults:
+    _api: ShantsHRM\Time\Api\MyTimesheetAPI
+
+apiv2_time_employee_time_sheets:
+  path: /api/v2/time/employees/{empNumber}/timesheets
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST ]
+  defaults:
+    _api: ShantsHRM\Time\Api\EmployeeTimesheetAPI
+
+apiv2_time_employee_time_sheet:
+  path: /api/v2/time/employees/{empNumber}/timesheets/{id}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ PUT ]
+  defaults:
+    _api: ShantsHRM\Time\Api\EmployeeTimesheetAPI
+
+apiv2_time_default_time_sheet:
+  path: /api/v2/time/timesheets/default
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    id: 0
+    _api: ShantsHRM\Time\Api\DefaultTimesheetAPI
+
+apiv2_time_my_timesheets_entries:
+  path: /api/v2/time/timesheets/{timesheetId}/entries
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Time\Api\MyTimesheetItemAPI
+
+apiv2_time_employees_timesheets_entries:
+  path: /api/v2/time/employees/timesheets/{timesheetId}/entries
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, PUT ]
+  defaults:
+    _api: ShantsHRM\Time\Api\EmployeeTimesheetItemAPI
+
+apiv2_time_timesheet_action_log:
+  path: /api/v2/time/timesheets/{timesheetId}/action-logs
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Time\Api\TimesheetActionLogAPI
+
+apiv2_time_timesheet_project_activity_unique_validation:
+  path: /api/v2/time/validation/{timesheetId}/project-activity
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _key: activityId
+    _api: ShantsHRM\Time\Api\TimesheetProjectActivityUniqueValidationAPI
+
+apiv2_time_my_timesheet_entries_comments:
+  path: /api/v2/time/timesheets/{timesheetId}/entries/comment
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ PUT ]
+  defaults:
+    _api: ShantsHRM\Time\Api\TimesheetCommentAPI
+
+apiv2_time_my_timesheet_entries_comment:
+  path: /api/v2/time/timesheets/{timesheetId}/entries/{id}/comment
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Time\Api\TimesheetCommentAPI
+
+apiv2_time_my_timesheet_time_format_config:
+  path: /api/v2/time/config/time-format
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    id: 0
+    _api: ShantsHRM\Time\Api\TimesheetTimeFormatAPI
+
+apiv2_time_copy_activity:
+  path: /api/v2/time/projects/{toProjectId}/activities/copy/{fromProjectId}
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET, POST ]
+  defaults:
+    _api: ShantsHRM\Time\Api\CopyProjectActivityAPI
+
+apiv2_time_employee_timesheets_list:
+  path: /api/v2/time/employees/timesheets/list
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Time\Api\EmployeeTimesheetListAPI
+
+apiv2_time_reports:
+  path: /api/v2/time/reports
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Time\Api\TimeReportAPI
+    _key: name
+
+apiv2_time_reports_data:
+  path: /api/v2/time/reports/data
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Time\Api\TimeReportDataAPI
+
+apiv2_time_project_admins:
+  path: /api/v2/time/project-admins
+  controller: ShantsHRM\Core\Controller\Rest\V2\GenericRestController::handle
+  methods: [ GET ]
+  defaults:
+    _api: ShantsHRM\Time\Api\ProjectAdminAPI
+
+##########################
+#        Screens
+##########################
+
+time_module:
+  path: /time/viewTimeModule
+  controller: ShantsHRM\Time\Controller\TimeModuleController::handle
+  methods: [ GET ]
+
+view_time_sheet_config:
+  path: /time/defineTimesheetPeriod
+  controller: ShantsHRM\Time\Controller\TimesheetPeriodConfigController::handle
+  methods: [ GET ]
+
+view_customers:
+  path: /time/viewCustomers
+  controller: ShantsHRM\Time\Controller\CustomerController::handle
+  methods: [ GET ]
+
+save_customer:
+  path: /time/addCustomer
+  controller: ShantsHRM\Time\Controller\SaveCustomerController::handle
+  methods: [ GET ]
+
+edit_customer:
+  path: /time/addCustomer/{id}
+  controller: ShantsHRM\Time\Controller\SaveCustomerController::handle
+  methods: [ GET ]
+
+time_my_timesheet:
+  path: /time/viewMyTimesheet
+  controller: ShantsHRM\Time\Controller\MyTimesheetController::handle
+  methods: [ GET ]
+
+time_edit_timesheet:
+  path: /time/editTimesheet/{id}
+  controller: ShantsHRM\Time\Controller\EditTimesheetController::handle
+  methods: [ GET ]
+
+time_view_projects:
+  path: /time/viewProjects
+  controller: ShantsHRM\Time\Controller\ProjectController::handle
+  methods: [ GET ]
+
+time_save_project:
+  path: /time/saveProject
+  controller: ShantsHRM\Time\Controller\SaveProjectController::handle
+  methods: [ GET ]
+
+time_edit_project:
+  path: /time/saveProject/{id}
+  controller: ShantsHRM\Time\Controller\SaveProjectController::handle
+  methods: [ GET ]
+
+time_employee_timesheet:
+  path: /time/viewEmployeeTimesheet
+  controller: ShantsHRM\Time\Controller\EmployeeTimesheetController::handle
+  methods: [ GET ]
+
+time_employee_view_timesheet:
+  path: /time/viewTimesheet/employeeId/{id}
+  controller: ShantsHRM\Time\Controller\EmployeeTimesheetController::handle
+  methods: [ GET ]
+
+time_employee_report:
+  path: /time/displayEmployeeReportCriteria
+  controller: ShantsHRM\Time\Controller\EmployeeTimeReportController::handle
+  methods: [ GET ]
+
+time_project_activity_report:
+  path: /time/displayProjectReportCriteria
+  controller: ShantsHRM\Time\Controller\ProjectActivityReportController::handle
+  methods: [ GET ]
+
+time_activity_details_report:
+  path: /time/displayProjectActivityDetailsReport
+  controller: ShantsHRM\Time\Controller\ActivityDetailsReportController::handle
+  methods: [ GET ]

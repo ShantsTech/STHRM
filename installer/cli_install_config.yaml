@@ -1,0 +1,26 @@
+database:
+  hostName: 127.0.0.1
+  hostPort: 3306
+  databaseName: shantshrm_mysql
+  privilegedDatabaseUser: root
+  privilegedDatabasePassword: root
+  useSameDbUserForShantsHRM: y # y/n, if this field `n` fill `shantshrmDatabaseUser` and `shantshrmDatabasePassword`
+  shantshrmDatabaseUser: ~
+  shantshrmDatabasePassword: ~
+  isExistingDatabase: n # y/n
+  enableDataEncryption: n # y/n
+
+organization:
+  name: ShantsHRM
+  country: US
+
+admin:
+  adminUserName: Admin
+  adminPassword: Ohrm@1423
+  adminEmployeeFirstName: ShantsHRM
+  adminEmployeeLastName: Admin
+  workEmail: admin@example.com
+  contactNumber: ~
+
+license:
+  agree: y # y/n
