@@ -24,26 +24,26 @@ use ShantsHRM\ORM\Exception\ConfigNotFoundException;
 
 class Config
 {
-    public const PLUGINS = 'ohrm_plugins';
-    public const PLUGIN_PATHS = 'ohrm_plugin_paths';
-    public const PLUGIN_CONFIGS = 'ohrm_plugin_configs';
-    public const BASE_DIR = 'ohrm_base_dir';
-    public const SRC_DIR = 'ohrm_src_dir';
-    public const PLUGINS_DIR = 'ohrm_plugins_dir';
-    public const PUBLIC_DIR = 'ohrm_public_dir';
-    public const LOG_DIR = 'ohrm_log_dir';
-    public const CACHE_DIR = 'ohrm_cache_dir';
-    public const CONFIG_DIR = 'ohrm_config_dir';
-    public const CRYPTO_KEY_DIR = 'ohrm_crypto_key_dir';
-    public const SESSION_DIR = 'ohrm_session_dir';
-    public const DOCTRINE_PROXY_DIR = 'ohrm_doctrine_proxy_dir';
-    public const APP_TEMPLATE_DIR = 'ohrm_app_template_dir';
-    public const TEST_DIR = 'ohrm_test_dir';
-    public const CONF_FILE_PATH = 'ohrm_conf_file_path';
-    public const I18N_ENABLED = 'ohrm_i18n_enabled';
-    public const DATE_FORMATTING_ENABLED = 'ohrm_date_formatting_enabled';
-    public const VUE_BUILD_TIMESTAMP = 'ohrm_vue_build_timestamp';
-    public const MAX_SESSION_IDLE_TIME = 'ohrm_max_session_idle_time';
+    public const PLUGINS = 'sthrm_plugins';
+    public const PLUGIN_PATHS = 'sthrm_plugin_paths';
+    public const PLUGIN_CONFIGS = 'sthrm_plugin_configs';
+    public const BASE_DIR = 'sthrm_base_dir';
+    public const SRC_DIR = 'sthrm_src_dir';
+    public const PLUGINS_DIR = 'sthrm_plugins_dir';
+    public const PUBLIC_DIR = 'sthrm_public_dir';
+    public const LOG_DIR = 'sthrm_log_dir';
+    public const CACHE_DIR = 'sthrm_cache_dir';
+    public const CONFIG_DIR = 'sthrm_config_dir';
+    public const CRYPTO_KEY_DIR = 'sthrm_crypto_key_dir';
+    public const SESSION_DIR = 'sthrm_session_dir';
+    public const DOCTRINE_PROXY_DIR = 'sthrm_doctrine_proxy_dir';
+    public const APP_TEMPLATE_DIR = 'sthrm_app_template_dir';
+    public const TEST_DIR = 'sthrm_test_dir';
+    public const CONF_FILE_PATH = 'sthrm_conf_file_path';
+    public const I18N_ENABLED = 'sthrm_i18n_enabled';
+    public const DATE_FORMATTING_ENABLED = 'sthrm_date_formatting_enabled';
+    public const VUE_BUILD_TIMESTAMP = 'sthrm_vue_build_timestamp';
+    public const MAX_SESSION_IDLE_TIME = 'sthrm_max_session_idle_time';
 
     public const MODE_DEV = 'dev';
     public const MODE_PROD = 'prod';
@@ -53,7 +53,7 @@ class Config
     public const PRODUCT_NAME = 'ShantsHRM OS';
     public const PRODUCT_VERSION = '5.3';
     public const PRODUCT_MODE = self::MODE_PROD;
-    public const REGISTRATION_URL = 'https://ospenguin.hrm.shants-tech.com';
+    public const REGISTRATION_URL = 'https://hrm.shants-tech.com';
 
     public const DEFAULT_MAX_SESSION_IDLE_TIME = 1800;
 

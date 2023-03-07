@@ -119,9 +119,9 @@ class ConfigHelper
         $pathToVueBuildDir = realpath($pathToProjectBase . '/web/dist');
         $pathToBuildTimestampFile = realpath($pathToVueBuildDir . '/build');
         return [
-            'ohrm_client_dir' => realpath($pathToSrcDir . '/client'),
+            'sthrm_client_dir' => realpath($pathToSrcDir . '/client'),
             Config::APP_TEMPLATE_DIR => realpath($pathToSrcDir . '/plugins/shantshrmCorePlugin/templates'),
-            'ohrm_vue_build_dir' => $pathToVueBuildDir,
+            'sthrm_vue_build_dir' => $pathToVueBuildDir,
             Config::VUE_BUILD_TIMESTAMP => $pathToBuildTimestampFile
                 ? file_get_contents($pathToBuildTimestampFile) : '',
         ];
